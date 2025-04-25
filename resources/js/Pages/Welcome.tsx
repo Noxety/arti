@@ -1,4 +1,6 @@
 import { Head, Link } from "@inertiajs/react";
+import Chat from "../Components/Chat";
+
 export default function Welcome({ auth }: any) {
     return (
         <>
@@ -49,6 +51,7 @@ export default function Welcome({ auth }: any) {
                             Tailwind CSS and Inertia.js.
                         </p>
                     </div>
+                    {auth.user && <Chat user={auth.user} />}
                 </main>
 
                 {/* Footer */}

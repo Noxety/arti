@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Http\Request;
+use App\Events\MessageSent;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -24,4 +26,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::middleware('auth:sanctum')->post('/chat', function (Request $request) {
+    $request->validate([
+        'message' => 'required|string',
+    ]);
+
+    broadcast(new MessageSent($request->user()->name, $request->message))->toOthers();
+
+    return response()->json(['status' => 'Message sent']);
+});
+
+require __DIR__ . '/auth.php';

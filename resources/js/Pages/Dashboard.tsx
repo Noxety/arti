@@ -1,7 +1,8 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import { Head } from "@inertiajs/react";
+import Chat from "../Components/Chat";
 
-export default function Dashboard() {
+export default function Dashboard({ auth }: any) {
     return (
         <AuthenticatedLayout
             header={
@@ -12,7 +13,7 @@ export default function Dashboard() {
         >
             <Head title="Dashboard" />
 
-            
+            <Chat user={auth.user} />
         </AuthenticatedLayout>
     );
 }

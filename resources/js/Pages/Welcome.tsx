@@ -71,7 +71,7 @@ export default function Welcome({ auth }: any) {
                             Tailwind CSS and Inertia.js.
                         </p>
                     </div>
-                    {auth.user && <Chat user={auth.user} />}
+                    {/* {auth.user && <Chat user={auth.user} />} */}
                 </main>
 
                 {/* Footer */}

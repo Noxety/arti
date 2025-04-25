@@ -13,7 +13,7 @@ export default function Dashboard({ auth }: any) {
         >
             <Head title="Dashboard" />
 
-            <Chat user={auth.user} />
+            {/* <Chat user={auth.user} /> */}
         </AuthenticatedLayout>
     );
 }

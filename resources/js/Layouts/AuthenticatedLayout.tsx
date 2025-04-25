@@ -5,19 +5,17 @@ import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link, usePage } from "@inertiajs/react";
 import { PropsWithChildren, ReactNode, useState } from "react";
 import { FaPen } from "react-icons/fa";
+import { Menu, X } from "lucide-react";
 
-export default function Authenticated({
+export default function Authenticated({ 
     header,
     children,
 }: PropsWithChildren<{ header?: ReactNode }>) {
     const user = usePage().props.auth.user;
-
-    const [showingNavigationDropdown, setShowingNavigationDropdown] =
-        useState(false);
-
     return (
         <div className="min-h-screen flex bg-gray-100 dark:bg-gray-900">
             {/* Sidebar */}
+         
             <aside className="relative w-64 flex flex-col justify-between bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700">
                 {/* Top: Logo and Nav */}
                 <div>
@@ -36,8 +34,6 @@ export default function Authenticated({
                         </NavLink>
                     </div>
                 </div>
-
-                {/* Bottom: Profile Dropdown */}
                 <div className="relative px-4 py-4 border-t border-gray-200 dark:border-gray-700">
                     <div>
                         <Link

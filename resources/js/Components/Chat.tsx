@@ -17,7 +17,7 @@ const Chat: React.FC<ChatProps> = ({ user }) => {
     const [messages, setMessages] = useState<Message[]>([]);
     const [message, setMessage] = useState("");
     const chatBoxRef = useRef<HTMLDivElement>(null);
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         window.Echo.channel("messages").listen(".message.sent", (e: any) => {

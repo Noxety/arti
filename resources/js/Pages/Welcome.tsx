@@ -1,7 +1,21 @@
 import { Head, Link } from "@inertiajs/react";
 import Chat from "../Components/Chat";
+import { useEffect, useState } from "react";
 
 export default function Welcome({ auth }: any) {
+    const [darkMode, setDarkMode] = useState(false);
+
+    useEffect(() => {
+        if (darkMode) {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+    }, [darkMode]);
+
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+    };
     return (
         <>
             <Head title="Welcome" />
@@ -37,6 +51,12 @@ export default function Welcome({ auth }: any) {
                                 </>
                             )}
                         </nav>
+                        <button
+                            onClick={toggleDarkMode}
+                            className="rounded-md px-4 py-2 text-sm font-medium text-black dark:text-white ring-1 ring-black/10 dark:ring-white/20 hover:bg-black/5 dark:hover:bg-white/10 transition"
+                        >
+                            {darkMode ? "Light Mode" : "Dark Mode"}
+                        </button>
                     </div>
                 </header>
 

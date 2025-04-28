@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::prefix('xxx/admin')->group(function () {
+        Route::resource('client', ClientController::class);
+        Route::get('client/getClientdata', [ClientController::class, 'getallClients'])->name('client.getallClients');
+    });
 });
+
 
 Route::middleware('auth:sanctum')->post('/chat', function (Request $request) {
     $request->validate([

@@ -8,7 +8,7 @@ import axios from "axios";
 import { ColumnDef } from "@tanstack/react-table";
 import { DataTable } from "../../../Components/DataTable";
 import { MoreHorizontal } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/Components/ui/button";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -16,9 +16,9 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/Components/ui/dropdown-menu";
 import { ArrowUpDown } from "lucide-react";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Checkbox } from "@/Components/ui/checkbox";
 import {
     Dialog,
     DialogContent,
@@ -26,7 +26,7 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/components/ui/dialog";
+} from "@/Components/ui/dialog";
 import { useForm } from "react-hook-form";
 import { Slide, toast, ToastContainer } from "react-toastify";
 

@@ -52,6 +52,10 @@ class ClientController extends Controller
 
         $client = Client::create($validated);
 
+        activity()
+            ->performedOn($client)
+            ->causedBy(Auth::user())
+            ->log('Created a new client: ' . $client->name);
         return response()->json([
             'message' => 'Client created successfully.',
             'client' => $client,
@@ -93,7 +97,10 @@ class ClientController extends Controller
 
         $client = Client::findOrFail($id);
         $client->update($validated);
-
+        activity()
+            ->performedOn($client)
+            ->causedBy(Auth::user())
+            ->log('Updated a new client: ' . $client->name);
         return response()->json([
             'message' => 'Client updated successfully.',
             'client' => $client,
@@ -108,6 +115,10 @@ class ClientController extends Controller
         $client = Client::findOrFail($id);
         $client->delete();
 
+        activity()
+            ->performedOn($client)
+            ->causedBy(Auth::user())
+            ->log('Deleted a new client: ' . $client->name);
         return response()->json([
             'message' => 'Client deleted successfully.',
         ], 200);

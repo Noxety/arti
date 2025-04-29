@@ -407,7 +407,7 @@ export default function ClientIndex({ auth, message }: any) {
     return (
         <AuthenticatedLayout
             header={
-                <div className="w-full flex items-center justify-between px-6 py-2 bg-gray-100 dark:bg-gray-800 shadow-sm">
+                <div className="flex items-center justify-between">
                     {/* Left - Title */}
                     <div className="flex-1">
                         <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">

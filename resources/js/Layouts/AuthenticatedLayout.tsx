@@ -87,7 +87,7 @@ export default function Authenticated({
             {/* Main Content */}
             <div className="flex-1 flex flex-col">
                 {header && (
-                    <header className="bg-white shadow dark:bg-gray-800">
+                    <header className="w-full h-16 items-center content-center px-6 py-2 bg-gray-100 dark:bg-gray-800 shadow-sm">
                         {header}
                     </header>
                 )}

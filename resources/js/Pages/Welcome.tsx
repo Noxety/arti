@@ -3,7 +3,7 @@ import Chat from "../Components/Chat";
 import { useEffect, useState } from "react";
 
 export default function Welcome({ auth }: any) {
-    const [darkMode, setDarkMode] = useState(false);
+    const [darkMode, setDarkMode] = useState(true);
 
     useEffect(() => {
         if (darkMode) {

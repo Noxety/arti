@@ -25,10 +25,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::prefix('xxx/admin')->group(function () {
-        Route::resource('client', ClientController::class);
-        Route::get('client/getClientdata', [ClientController::class, 'getallClients'])->name('client.getallClients');
-    });
+});
+
+
+Route::prefix('xxx/admin')->group(function () {
+    Route::resource('client', ClientController::class);
+    Route::get('client.getallClients', [ClientController::class, 'getallClient'])->name('client.getallClients');
 });
 
 

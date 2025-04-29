@@ -18,7 +18,6 @@ class ClientController extends Controller
     {
         $clients = Client::all();
         return Inertia::render('AdminPanel/Client/index', [
-            'message' => 'Hello from ClientController',
             'user' => Auth::user(),
             'clients' => $clients,
         ]);
@@ -81,7 +80,24 @@ class ClientController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:clients,email,' . $id,
+            'phone' => 'nullable|string|max:255',
+            'companyName' => 'nullable|string|max:255',
+            'companyAddress' => 'nullable|string|max:255',
+            'companyPhone' => 'nullable|string|max:255',
+            'companyEmail' => 'nullable|string|email|max:255',
+            'isActive' => 'nullable|boolean',
+        ]);
+
+        $client = Client::findOrFail($id);
+        $client->update($validated);
+
+        return response()->json([
+            'message' => 'Client updated successfully.',
+            'client' => $client,
+        ], 200); // 200 OK
     }
 
     /**
@@ -89,17 +105,21 @@ class ClientController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $client->delete();
+
+        return response()->json([
+            'message' => 'Client deleted successfully.',
+        ], 200);
     }
 
-    public function getallClients()
+    public function getallClient()
     {
         $clients = Client::all();
-        dd($clients);
-        return response()->json([
-            'clients' => $clients,
-            'message' => 'Clients retrieved successfully.',
-        ], 200);
-        
+        return response()
+            ->json([
+                'clients' => $clients,
+                'message' => 'Clients retrieved successfully.',
+            ], 200, ['Content-Type' => 'application/json']);
     }
 }
